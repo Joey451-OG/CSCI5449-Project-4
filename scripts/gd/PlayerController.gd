@@ -15,9 +15,14 @@ enum STATE {
 }
 
 var current_state : STATE = STATE.IDLE
+var isLookingRight : bool = true
 var _seen_dash_inputs := 0
 
+func _process(delta: float) -> void:
+	print(current_state)
+
 func _physics_process(delta: float) -> void:
+	
 	# Track Dash Inputs
 	if Input.is_action_just_pressed("Dash"):
 		_seen_dash_inputs += 1
@@ -41,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	if hor_dir:
 		velocity.x = hor_dir * SPEED
+		isLookingRight = true if hor_dir > 0 else false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	

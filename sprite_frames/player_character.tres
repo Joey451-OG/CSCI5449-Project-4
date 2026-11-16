@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://ya4ik62p5naw" path="res://sprites/character/SPRITE_SHEET.png" id="1_5ficw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wbqj"]
-atlas = ExtResource("1_5ficw")
-region = Rect2(0, 256, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_js2lw"]
 atlas = ExtResource("1_5ficw")
 region = Rect2(32, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wbqj"]
+atlas = ExtResource("1_5ficw")
+region = Rect2(0, 256, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51848"]
 atlas = ExtResource("1_5ficw")
@@ -222,7 +222,25 @@ region = Rect2(224, 32, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_js2lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js2lw")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8wbqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wbqj")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_js2lw")
@@ -241,7 +259,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"dash",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -288,7 +306,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"death",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -309,9 +327,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ackuo")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -376,7 +394,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"shoot",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -403,7 +421,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qph5d")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"walk",
-"speed": 5.0
+"speed": 9.0
 }]

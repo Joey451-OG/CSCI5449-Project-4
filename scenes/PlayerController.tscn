@@ -14,7 +14,10 @@ script = ExtResource("1_awcob")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=948353050]
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_awcob")
+animation = &"dash"
 autoplay = "default"
+frame = 11
+frame_progress = 1.0
 script = ExtResource("3_hkpaj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=97514625]
