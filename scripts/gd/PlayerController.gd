@@ -29,7 +29,9 @@ var _dash_dir := Vector2.ZERO
 var _dash_time_left := 0.0
 
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("Fire"):
+		bazooka_state = STATE.FIRING
+	
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dash"):

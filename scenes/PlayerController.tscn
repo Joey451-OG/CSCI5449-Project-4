@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dwk5ump375kb7" path="res://scripts/gd/player_animated_sprite.gd" id="3_hkpaj"]
 [ext_resource type="SpriteFrames" uid="uid://bufccag78kiey" path="res://sprite_frames/bazooka.tres" id="4_bb7sg"]
 [ext_resource type="Script" uid="uid://c4pxnpb233pl0" path="res://scripts/gd/bazooka_animated_sprite.gd" id="5_t6qk1"]
+[ext_resource type="Texture2D" uid="uid://crmf7n350onlt" path="res://sprites/Aim_Shadow.png" id="6_iqnxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj43t"]
 size = Vector2(129, 128)
@@ -28,9 +29,35 @@ shape = SubResource("RectangleShape2D_sj43t")
 
 [node name="Bazooka" type="AnimatedSprite2D" parent="." unique_id=1112001209]
 z_index = 4
-position = Vector2(182, 16)
-scale = Vector2(1.5, 3)
+position = Vector2(291, 16)
+scale = Vector2(3, 6)
 sprite_frames = ExtResource("4_bb7sg")
-animation = &"fire"
+animation = &"load"
 autoplay = "idle"
+frame = 15
+frame_progress = 1.0
 script = ExtResource("5_t6qk1")
+
+[node name="Shadows" type="Node2D" parent="." unique_id=887666446]
+
+[node name="South" type="Sprite2D" parent="Shadows" unique_id=500153253]
+position = Vector2(0, 850)
+scale = Vector2(5, 5)
+texture = ExtResource("6_iqnxw")
+
+[node name="North" type="Sprite2D" parent="Shadows" unique_id=292101003]
+position = Vector2(0, -850)
+scale = Vector2(5, 5)
+texture = ExtResource("6_iqnxw")
+
+[node name="East" type="Sprite2D" parent="Shadows" unique_id=494155085]
+position = Vector2(850, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("6_iqnxw")
+
+[node name="West" type="Sprite2D" parent="Shadows" unique_id=1845925825]
+position = Vector2(-850, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("6_iqnxw")
+
+[connection signal="animation_finished" from="Bazooka" to="Bazooka" method="_on_animation_finished"]

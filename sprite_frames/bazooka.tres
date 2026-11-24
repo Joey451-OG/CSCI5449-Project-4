@@ -130,9 +130,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eho1o")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"fire",
-"speed": 8.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -191,7 +191,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oxtrb")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"load",
 "speed": 16.0
 }]
