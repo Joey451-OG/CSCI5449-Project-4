@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 			play("default")
 		parent.STATE.MOVING:
 			play("walk")
-		#parent.STATE.DASHING:
-		#	play("dash")
+		parent.STATE.DASHING:
+			play("dash")
 		parent.STATE.DEAD:
 			play("death")

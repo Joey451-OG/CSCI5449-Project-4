@@ -1,0 +1,7 @@
+Z-Indexes:
+	Player --> 3
+	Gun --> 4
+	Gun-Shadow --> 3
+	Enimies --> 2
+	Floor --> 0
+	
