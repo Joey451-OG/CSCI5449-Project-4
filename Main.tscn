@@ -6,3 +6,6 @@
 
 [node name="PlayerController" parent="." unique_id=260106589 instance=ExtResource("1_glv2v")]
 position = Vector2(254, 349)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=121785066]
+zoom = Vector2(0.4, 0.4)

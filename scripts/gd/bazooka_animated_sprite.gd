@@ -17,7 +17,8 @@ var _rocket: Sprite2D = null
 var _rocket_start := Vector2.ZERO
 var _rocket_end := Vector2.ZERO
 var _rocket_t := 1.0
-var _target_shadow = null
+var _target_shadow: Sprite2D = null
+var _target_shadow_global_pos := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -57,8 +58,9 @@ func _process(delta: float) -> void:
 
 	if _rocket and _rocket_t < 1.0:
 		_target_shadow.visible = true
+		_target_shadow.global_position = _target_shadow_global_pos
 		_rocket_t = minf(_rocket_t + delta / rocket_duration, 1.0)
-		_rocket.position = _bezier(_rocket_start, _rocket_end, _rocket_t)
+		_rocket.position = parent.to_local(_bezier(_rocket_start, _rocket_end, _rocket_t))
 		_rocket.rotation = _bezier_tangent(_rocket_start, _rocket_end, _rocket_t).angle()
 		if _rocket_t >= 1.0:
 			_target_shadow.visible = false
@@ -78,8 +80,9 @@ func _launch_rocket(active_shadow: Sprite2D) -> void:
 	if _rocket:
 		_rocket.queue_free()
 	var scaled_tip_offset := rocket_tip_offset * scale.x
-	_rocket_start = position + Vector2(scaled_tip_offset, 0.0).rotated(rotation)
-	_rocket_end = active_shadow.position
+	_rocket_start = global_position + Vector2(scaled_tip_offset, 0.0).rotated(rotation)
+	_rocket_end = active_shadow.global_position
+	_target_shadow_global_pos = active_shadow.global_position
 	_rocket_t = 0.0
 	_rocket = Sprite2D.new()
 	_rocket.texture = ROCKET_TEXTURE

@@ -15,7 +15,7 @@ motion_mode = 1
 script = ExtResource("1_awcob")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=948353050]
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_awcob")
 animation = &"dash"
 autoplay = "default"
