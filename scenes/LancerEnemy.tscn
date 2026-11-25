@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d7khisw3c7y6"]
+
+[ext_resource type="Script" path="res://scripts/gd/LancerEnemy.gd" id="1_lancer"]
+[ext_resource type="SpriteFrames" uid="uid://c1td3paa8axsv" path="res://sprite_frames/lancer.tres" id="2_lancer"]
+[ext_resource type="PackedScene" uid="uid://bhealthbar1ab" path="res://scenes/HealthBar.tscn" id="3_lancer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lancer"]
+size = Vector2(64, 80)
+
+[node name="LancerEnemy" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_lancer")
+SPEED = 110.0
+MAX_HEALTH = 120.0
+ATTACK_RANGE = 80.0
+ATTACK_DAMAGE = 20.0
+ATTACK_COOLDOWN = 1.2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("2_lancer")
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lancer")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_lancer")]
+position = Vector2(0, -200)
+scale = Vector2(0.5, 0.5)

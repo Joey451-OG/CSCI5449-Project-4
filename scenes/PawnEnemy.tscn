@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ctv3sj0xf6nbh"]
+
+[ext_resource type="Script" uid="uid://dgkngpprw475l" path="res://scripts/gd/PawnEnemy.gd" id="1_pawn"]
+[ext_resource type="SpriteFrames" uid="uid://bj88f1dtejnsq" path="res://sprite_frames/pawn.tres" id="2_pawn"]
+[ext_resource type="PackedScene" uid="uid://bhealthbar1ab" path="res://scenes/HealthBar.tscn" id="3_pawn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pawn"]
+size = Vector2(50, 70)
+
+[node name="PawnEnemy" type="CharacterBody2D" unique_id=690947499]
+motion_mode = 1
+script = ExtResource("1_pawn")
+SPEED = 90.0
+MAX_HEALTH = 60.0
+ATTACK_RANGE = 120.0
+ATTACK_DAMAGE = 8.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1988385579]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_pawn")
+animation = &"Idle"
+frame_progress = 0.06587232
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284951582]
+shape = SubResource("RectangleShape2D_pawn")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_pawn")]
+position = Vector2(0, -130)
+scale = Vector2(0.5, 0.5)

@@ -41,22 +41,22 @@ script = ExtResource("5_t6qk1")
 [node name="Shadows" type="Node2D" parent="." unique_id=887666446]
 
 [node name="South" type="Sprite2D" parent="Shadows" unique_id=500153253]
-position = Vector2(0, 850)
+position = Vector2(0, 600)
 scale = Vector2(5, 5)
 texture = ExtResource("6_iqnxw")
 
 [node name="North" type="Sprite2D" parent="Shadows" unique_id=292101003]
-position = Vector2(0, -850)
+position = Vector2(0, -600)
 scale = Vector2(5, 5)
 texture = ExtResource("6_iqnxw")
 
 [node name="East" type="Sprite2D" parent="Shadows" unique_id=494155085]
-position = Vector2(850, 0)
+position = Vector2(600, 0)
 scale = Vector2(5, 5)
 texture = ExtResource("6_iqnxw")
 
 [node name="West" type="Sprite2D" parent="Shadows" unique_id=1845925825]
-position = Vector2(-850, 0)
+position = Vector2(-600, 0)
 scale = Vector2(5, 5)
 texture = ExtResource("6_iqnxw")
 

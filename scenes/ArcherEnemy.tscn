@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dgq8x05lar0bc"]
+
+[ext_resource type="Script" uid="uid://bblqv5pvm7wbn" path="res://scripts/gd/ArcherEnemy.gd" id="1_archer"]
+[ext_resource type="SpriteFrames" uid="uid://c6gpw1cx741fn" path="res://sprite_frames/archer.tres" id="2_archer"]
+[ext_resource type="PackedScene" uid="uid://bhealthbar1ab" path="res://scenes/HealthBar.tscn" id="3_archer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_archer"]
+size = Vector2(50, 70)
+
+[node name="ArcherEnemy" type="CharacterBody2D" unique_id=1271978123]
+motion_mode = 1
+script = ExtResource("1_archer")
+SPEED = 70.0
+MAX_HEALTH = 70.0
+DETECT_RANGE = 900.0
+ATTACK_RANGE = 600.0
+ATTACK_DAMAGE = 15.0
+ATTACK_COOLDOWN = 2.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=67601813]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_archer")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.95827633
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1562041248]
+shape = SubResource("RectangleShape2D_archer")
+
+[node name="HealthBar" parent="." unique_id=483918585 instance=ExtResource("3_archer")]
+position = Vector2(0, -150)
+scale = Vector2(0.5, 0.5)

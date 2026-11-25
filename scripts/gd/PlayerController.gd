@@ -4,8 +4,11 @@ extends CharacterBody2D
 @export var DASH_INPUTS_NEEDED := 2
 @export var DASH_SPEED := 1000
 @export var SPEED = 300.0
+@export var MAX_HEALTH := 100.0
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
+
+var health: float
 
 const JUMP_VELOCITY = -400.0
 const DASH_ANIMATION_LENGTH_IN_SECONDS = 0.5
@@ -27,6 +30,22 @@ var isLookingRight : bool = true
 var _seen_dash_inputs := 0
 var _dash_dir := Vector2.ZERO
 var _dash_time_left := 0.0
+
+func _ready() -> void:
+	health = MAX_HEALTH
+	add_to_group("player")
+
+func take_damage(amount: float) -> void:
+	if current_state == STATE.DEAD:
+		return
+	health = maxf(health - amount, 0.0)
+	if health <= 0.0:
+		current_state = STATE.DEAD
+
+func heal(amount: float) -> void:
+	if current_state == STATE.DEAD:
+		return
+	health = minf(health + amount, MAX_HEALTH)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Fire"):

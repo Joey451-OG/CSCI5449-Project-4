@@ -9,16 +9,17 @@ extends AnimatedSprite2D
 @export var rocket_arc_height: float = 80.0
 @export var rocket_duration: float = 0.5
 
-const ROCKET_TEXTURE := preload("res://sprites/Bazooka_Rocket.png")
+const ROCKET_SCENE := preload("res://scenes/Rocket.tscn")
 
 var _orbit_radius: float
 var _prev_firing := false
-var _rocket: Sprite2D = null
+var _rocket: Rocket = null
 var _rocket_start := Vector2.ZERO
 var _rocket_end := Vector2.ZERO
 var _rocket_t := 1.0
 var _target_shadow: Sprite2D = null
 var _target_shadow_global_pos := Vector2.ZERO
+var _target_shadow_original_pos := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -53,6 +54,7 @@ func _process(delta: float) -> void:
 	var is_firing := parent.bazooka_state == parent.STATE.FIRING
 	if is_firing and not _prev_firing:
 		_target_shadow = closest
+		_target_shadow_original_pos = closest.position
 		_launch_rocket(_target_shadow)
 	_prev_firing = is_firing
 
@@ -64,7 +66,8 @@ func _process(delta: float) -> void:
 		_rocket.rotation = _bezier_tangent(_rocket_start, _rocket_end, _rocket_t).angle()
 		if _rocket_t >= 1.0:
 			_target_shadow.visible = false
-			_rocket.queue_free()
+			_target_shadow.position = _target_shadow_original_pos
+			_rocket.explode(_rocket_end)
 			_rocket = null
 
 	match(parent.bazooka_state):
@@ -84,11 +87,7 @@ func _launch_rocket(active_shadow: Sprite2D) -> void:
 	_rocket_end = active_shadow.global_position
 	_target_shadow_global_pos = active_shadow.global_position
 	_rocket_t = 0.0
-	_rocket = Sprite2D.new()
-	_rocket.texture = ROCKET_TEXTURE
-	_rocket.scale = Vector2(2, 2)
-	_rocket.z_index = 5
-	_rocket.position = _rocket_start
+	_rocket = ROCKET_SCENE.instantiate()
 	parent.add_child(_rocket)
 
 

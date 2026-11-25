@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dfydh0eie7ex3"]
 
 [ext_resource type="PackedScene" uid="uid://ckssaij2hws55" path="res://scenes/PlayerController.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://dgq8x05lar0bc" path="res://scenes/ArcherEnemy.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://ctv3sj0xf6nbh" path="res://scenes/PawnEnemy.tscn" id="3_cm0pq"]
 
 [node name="Node2D" type="Node2D" unique_id=1823363954]
 
@@ -9,3 +11,13 @@ position = Vector2(254, 349)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=121785066]
 zoom = Vector2(0.4, 0.4)
+
+[node name="ArcherEnemy" parent="." unique_id=893547965 instance=ExtResource("2_r0du0")]
+position = Vector2(976, -48)
+
+[node name="ArcherEnemy2" parent="." unique_id=224262464 instance=ExtResource("2_r0du0")]
+position = Vector2(-631, -67)
+
+[node name="PawnEnemy" parent="." unique_id=368839195 instance=ExtResource("3_cm0pq")]
+position = Vector2(165, 61)
+ATTACK_RANGE = 120.0
